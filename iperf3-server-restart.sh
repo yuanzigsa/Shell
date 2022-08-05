@@ -1,5 +1,5 @@
 #!/bin/sh
-process=`ps -aux | grep -v grep | grep iperf3 | awk '{print $2}'`
+process=`ps -elf |grep 'node server'|grep -v grep |head -n 1 |awk '{printf $4}'`
 #echo $process
 if [ "$process" == "" ]; then
 echo "iperf3服务端进程不存在，正在重启..."
